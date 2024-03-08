@@ -23,7 +23,7 @@ defaults:
 # Install macOS applications.
 brew:
 	@echo "\033[0;34mRun brew.sh\033[0m"
-	@.bin/brew.sh
+	@./brew.sh
 	@echo "\033[0;32mDone.\033[0m"
 
 # Set GitHub
