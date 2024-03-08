@@ -29,5 +29,5 @@ brew:
 # Set GitHub
 github:
 	@echo "\033[0;34mRun github.sh\033[0m"
-	@./setup.sh
+	@./github.sh
 	@echo "\033[0;32mDone.\033[0m"
