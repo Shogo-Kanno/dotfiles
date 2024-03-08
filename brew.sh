@@ -7,8 +7,14 @@ if [ "$(uname)" != "Darwin" ] ; then
 	exit 1
 fi
 
+function open_app_store {
+    sleep 1
+    echo "Open the App Store."
+    open -a "App Store"
+}
+
 function login_check {
-  sleep 1; echo "Open the App Store." && open -a App\ Store
+  open_app_store
   while true; do
     echo -n "$* [Y/n]: (default: n) "
     read ANS
