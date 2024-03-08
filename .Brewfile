@@ -10,6 +10,7 @@ tap "sanemat/font"
 brew "git"
 brew "gitmoji"
 brew "shellcheck"
+brew "gh"
 
 cask "figma"
 cask "google-chrome"
