@@ -1,28 +1,30 @@
+SHELL := /bin/bash
 
-# Run all shell files
-all:link init brew github
+.PHONY: all install-git install-github install-gcc install-neovim install-python link-dotfiles
 
-# run init.sh
-init:
-	@echo "\033[0;34mRun init.sh\033[0m"
-	@./init.sh
-	@echo "\033[0;34mDone.\033[0m"
+all: install-git install-github install-gcc install-neovim install-python link-dotfiles
 
-# next create symbolic links
-link:
-	@echo "\033[0;34mRun link.sh\033[0m"
-	@./link.sh
-	@echo "\033[0;34mDone.\033[0m"
+install-git:
+	sudo apt update && sudo apt install -y git
 
-# Set macOS system preferences.
-defaults:
-	@echo "\033[0;34mRun defaults.sh\033[0m"
-	@./defaults.sh
-	@echo "\033[0;32mDone.\033[0m"
+install-github:
+	sudo apt install -y gh
+	gh auth login
 
-# Install macOS applications.
-brew:
-	@echo "\033[0;34mRun brew.sh\033[0m"
-	@./brew.sh
-	@echo "\033[0;32mDone.\033[0m"
+install-gcc:
+	sudo apt install -y build-essential
+
+install-neovim:
+	sudo apt install -y neovim
+
+install-python:
+	sudo apt install -y python3 python3-pip
+
+link-dotfiles:
+	@echo "Linking dotfiles..."
+	ln -sf $(PWD)/.bashrc ~/.bashrc
+	ln -sf $(PWD)/.gitconfig ~/.gitconfig
+	mkdir -p ~/.config/nvim
+	ln -sf $(PWD)/.config/nvim/init.lua ~/.config/nvim/init.lua
+
 
