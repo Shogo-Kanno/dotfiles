@@ -18,9 +18,18 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y make
-
       - name: ▶️ Makefile を実行してチェック
-        run: make
+        run: |
+          make
+          echo "--- DEBUG: .bashrc ---"
+          ls -l "$HOME/.bashrc" || true
+          echo "--- DEBUG: .gitconfig ---"
+          ls -l "$HOME/.gitconfig" || true
+          echo "--- DEBUG: init.lua ---"
+          ls -l "$HOME/.config/nvim/init.lua" || true
+
+
+     
 
       - name: ✅ 必須ファイルの存在確認
         run: |
