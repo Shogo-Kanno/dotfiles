@@ -22,6 +22,6 @@ install-python:
 link-dotfiles:
 	@echo "Linking dotfiles to home..."
 	ln -sf $(PWD)/.bashrc ~/.
-	ln -sf $(PWD)/.gitconfig $/.
+	ln -sf $(PWD)/.gitconfig ~/.
 	mkdir -p ~/.config/nvim
 	ln -sf $(PWD)/.config/nvim/init.lua ~/.config/nvim/init.lua
