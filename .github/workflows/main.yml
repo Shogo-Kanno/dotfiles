@@ -20,20 +20,16 @@ jobs:
           sudo apt install -y make
       - name: ▶️ Makefile を実行してチェック
         run: |
-          make
-          echo "--- DEBUG: .bashrc ---"
-          ls -l "$HOME/.bashrc" || true
-          echo "--- DEBUG: .gitconfig ---"
-          ls -l "$HOME/.gitconfig" || true
-          echo "--- DEBUG: init.lua ---"
-          ls -l "$HOME/.config/nvim/init.lua" || true
-
-
-     
-
+          make link-dotfiles
+          
       - name: ✅ 必須ファイルの存在確認
         run: |
-          test -f "$HOME/.bashrc"
-          test -f "$HOME/.gitconfig"
-          test -f "$HOME/.config/nvim/init.lua"
+          echo "Home is: $HOME"
+          ls -l ~/.bashrc
+          ls -l ~/.gitconfig
+          ls -l ~/.config/nvim/init.lua
+          
+          test -f ~/.bashrc
+          test -f ~/.gitconfig
+          test -f ~/.config/nvim/init.lua
      
