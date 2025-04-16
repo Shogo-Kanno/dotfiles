@@ -24,8 +24,8 @@ jobs:
 
       - name: ✅ 必須ファイルの存在確認
         run: |
-          test -f .bashrc
-          test -f .gitconfig
-          test -f .config/nvim/init.lua
+          test -f ~/.bashrc
+          test -f ~/.gitconfig
+          test -f ~/.config/nvim/init.lua
 
      
