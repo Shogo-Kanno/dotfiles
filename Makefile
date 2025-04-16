@@ -9,9 +9,6 @@ install-git:
 
 install-github:
 	sudo apt install -y gh
-	@if [ "$(CI)" != "true" ]; then \
-		gh auth login; \
-	fi
 
 install-gcc:
 	sudo apt install -y build-essential
@@ -24,11 +21,7 @@ install-python:
 
 link-dotfiles:
 	@echo "Linking dotfiles to $(HOME)..."
-	@ls -l $(PWD)/.bashrc
-	@ls -l $(PWD)/.gitconfig
 	ln -sf $(PWD)/.bashrc $(HOME)/.bashrc
 	ln -sf $(PWD)/.gitconfig $(HOME)/.gitconfig
 	mkdir -p $(HOME)/.config/nvim
 	ln -sf $(PWD)/.config/nvim/init.lua $(HOME)/.config/nvim/init.lua
-
-
