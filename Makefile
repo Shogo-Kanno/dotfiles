@@ -9,7 +9,9 @@ install-git:
 
 install-github:
 	sudo apt install -y gh
+ifneq ($(CI),true)
 	gh auth login
+endif
 
 install-gcc:
 	sudo apt install -y build-essential
