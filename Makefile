@@ -9,9 +9,9 @@ install-git:
 
 install-github:
 	sudo apt install -y gh
-ifneq ($(CI),true)
-	gh auth login
-endif
+	@if [ "$(CI)" != "true" ]; then \
+		gh auth login; \
+	fi
 
 install-gcc:
 	sudo apt install -y build-essential
@@ -28,5 +28,3 @@ link-dotfiles:
 	ln -sf $(PWD)/.gitconfig ~/.gitconfig
 	mkdir -p ~/.config/nvim
 	ln -sf $(PWD)/.config/nvim/init.lua ~/.config/nvim/init.lua
-
-
