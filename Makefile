@@ -23,8 +23,12 @@ install-python:
 	sudo apt install -y python3 python3-pip
 
 link-dotfiles:
-	@echo "Linking dotfiles..."
-	ln -sf $(PWD)/.bashrc ~/.bashrc
-	ln -sf $(PWD)/.gitconfig ~/.gitconfig
-	mkdir -p ~/.config/nvim
-	ln -sf $(PWD)/.config/nvim/init.lua ~/.config/nvim/init.lua
+	@echo "Linking dotfiles to $(HOME)..."
+	@ls -l $(PWD)/.bashrc
+	@ls -l $(PWD)/.gitconfig
+	ln -sf $(PWD)/.bashrc $(HOME)/.bashrc
+	ln -sf $(PWD)/.gitconfig $(HOME)/.gitconfig
+	mkdir -p $(HOME)/.config/nvim
+	ln -sf $(PWD)/.config/nvim/init.lua $(HOME)/.config/nvim/init.lua
+
+
