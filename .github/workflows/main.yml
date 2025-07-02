@@ -14,7 +14,7 @@ jobs:
       - name: 📥 リポジトリを `dotfiles/` にチェックアウト
         uses: actions/checkout@v3
         with:
-          path: dotfiles  # ← PWD が明確に `dotfiles/` ディレクトリになる
+          path: dotfiles  
 
       - name: 🔧 必要なパッケージをインストール
         run: |
