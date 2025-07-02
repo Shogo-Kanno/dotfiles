@@ -20,9 +20,29 @@ install-python:
 	sudo apt install -y python3 python3-pip
 
 link-dotfiles:
-	@echo "Linking dotfiles to home…"
-	@if [ -f ".bashrc" ]; then ln -sf $(PWD)/.bashrc ~/.bashrc; else echo ".bashrc not found, skip"; fi
-	@if [ -f ".gitconfig" ]; then ln -sf $(PWD)/.gitconfig ~/.gitconfig; else echo ".gitconfig not found, skip"; fi
-	@if [ -d ".config/nvim" ]; then \
-	  ln -snf $(PWD)/.config/nvim ~/.config/; \
-	else echo ".config/nvim not found, skip"; fi
+	@echo "🔗 Linking dotfiles to home directory..."
+
+	@if [ -f "$(PWD)/.bashrc" ]; then \
+		ln -sf $(PWD)/.bashrc ~/.bashrc; \
+		echo "✅ Linked .bashrc"; \
+	else \
+		echo "⚠️  .bashrc not found, skipping"; \
+	fi
+
+	@if [ -f "$(PWD)/.gitconfig" ]; then \
+		ln -sf $(PWD)/.gitconfig ~/.gitconfig; \
+		echo "✅ Linked .gitconfig"; \
+	else \
+		echo "⚠️  .gitconfig not found, skipping"; \
+	fi
+
+	@mkdir -p ~/.config
+
+	@if [ -d "$(PWD)/.config/nvim" ]; then \
+		mkdir -p ~/.config; \
+		rm -rf ~/.config/nvim; \
+		ln -snf $(PWD)/.config/nvim ~/.config/nvim; \
+		echo "✅ Linked .config/nvim"; \
+	else \
+		echo "⚠️  .config/nvim not found, skipping"; \
+	fi
