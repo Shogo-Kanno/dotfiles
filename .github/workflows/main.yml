@@ -11,25 +11,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 📥 リポジトリをチェックアウト
+      - name: 📥 リポジトリを `dotfiles/` にチェックアウト
         uses: actions/checkout@v3
+        with:
+          path: dotfiles  # ← PWD が明確に `dotfiles/` ディレクトリになる
 
       - name: 🔧 必要なパッケージをインストール
         run: |
           sudo apt update
           sudo apt install -y make
-      - name: ▶️ Makefile を実行してチェック
+
+      - name: ▶️ Makefile を実行してリンク作成
         run: |
+          cd dotfiles
           make link-dotfiles
-          
+
       - name: ✅ 必須ファイルの存在確認
         run: |
           echo "Home is: $HOME"
           ls -l ~/.bashrc
           ls -l ~/.gitconfig
           ls -l ~/.config/nvim/init.lua
-          
+
           test -e ~/.bashrc
           test -e ~/.gitconfig
           test -e ~/.config/nvim/init.lua
-     
