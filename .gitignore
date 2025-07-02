@@ -1,0 +1,32 @@
+# 🎯 OS固有ファイル
+.DS_Store
+Thumbs.db
+
+# 🔁 Vim/Neovim の一時ファイル
+*.swp
+*.swo
+*~ 
+*.un~
+# Neovim plugin lockfile（後から生成されるので無視推奨）
+lazy-lock.json
+
+# 🧹 キャッシュ・ログ・一時データ
+.cache/
+*.log
+*.tmp
+
+# 🧑‍💻 開発スクリプト生成物（例：Makefile でのアウトプット）
+*.out
+*.o
+*.exe
+
+# 🧪 Python キャッシュ
+__pycache__/
+*.pyc
+
+# 📝 エディタのバックアップファイル
+*.bak
+*.orig
+
+# 🧩 VSCodeなど、IDE設定ディレクトリ（使わなければ削除可）
+.vscode/
