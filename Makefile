@@ -20,10 +20,9 @@ install-python:
 	sudo apt install -y python3 python3-pip
 
 link-dotfiles:
-	@echo "Linking dotfiles to home..."
-	@if [ -f "$(PWD)/.bashrc" ]; then ln -sf $(PWD)/.bashrc ~/.; else echo ".bashrc not found, skipping"; fi
-	@if [ -f "$(PWD)/.gitconfig" ]; then ln -sf $(PWD)/.gitconfig ~/.; else echo ".gitconfig not found, skipping"; fi
-	@if [ -f "$(PWD)/.config/nvim/init.lua" ]; then \
-	  mkdir -p ~/.config/nvim; \
-	  ln -sf $(PWD)/.config/nvim/init.lua ~/.config/nvim/init.lua; \
-	else echo "init.lua not found, skipping"; fi
+	@echo "Linking dotfiles to home…"
+	@if [ -f ".bashrc" ]; then ln -sf $(PWD)/.bashrc ~/.bashrc; else echo ".bashrc not found, skip"; fi
+	@if [ -f ".gitconfig" ]; then ln -sf $(PWD)/.gitconfig ~/.gitconfig; else echo ".gitconfig not found, skip"; fi
+	@if [ -d ".config/nvim" ]; then \
+	  ln -snf $(PWD)/.config/nvim ~/.config/; \
+	else echo ".config/nvim not found, skip"; fi
