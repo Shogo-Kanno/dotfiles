@@ -21,7 +21,9 @@ install-python:
 
 link-dotfiles:
 	@echo "Linking dotfiles to home..."
-	ln -sf $(PWD)/.bashrc ~/.
-	ln -sf $(PWD)/.gitconfig ~/.
-	mkdir -p ~/.config/nvim
-	ln -sf $(PWD)/.config/nvim/init.lua ~/.config/nvim/init.lua
+	@if [ -f "$(PWD)/.bashrc" ]; then ln -sf $(PWD)/.bashrc ~/.; else echo ".bashrc not found, skipping"; fi
+	@if [ -f "$(PWD)/.gitconfig" ]; then ln -sf $(PWD)/.gitconfig ~/.; else echo ".gitconfig not found, skipping"; fi
+	@if [ -f "$(PWD)/.config/nvim/init.lua" ]; then \
+	  mkdir -p ~/.config/nvim; \
+	  ln -sf $(PWD)/.config/nvim/init.lua ~/.config/nvim/init.lua; \
+	else echo "init.lua not found, skipping"; fi
