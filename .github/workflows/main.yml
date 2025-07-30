@@ -24,6 +24,7 @@ jobs:
       - name: ▶️ Makefile を実行してリンク作成
         run: |
           cd dotfiles
+          make link-dotfiles
           
 
       - name: ✅ 必須ファイルの存在確認
