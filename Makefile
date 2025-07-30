@@ -47,7 +47,7 @@ link-dotfiles:
 		echo "⚠️  .config/nvim not found, skipping"; \
 	fi
 
-backup-wsl:
+backup-wsl:
 	@echo "➡ Shutting down WSL..."
 	powershell.exe -Command "wsl --shutdown"
 	@echo "➡ Exporting Ubuntu to external SSD E: drive..."
