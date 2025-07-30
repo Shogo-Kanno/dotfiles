@@ -47,10 +47,9 @@ link-dotfiles:
 		echo "⚠️  .config/nvim not found, skipping"; \
 	fi
 
-
-	backup-wsl:
+backup-wsl:
 	@echo "➡ Shutting down WSL..."
 	powershell.exe -Command "wsl --shutdown"
 	@echo "➡ Exporting Ubuntu to external SSD E: drive..."
-	powershell.exe -Command "wsl --export Ubuntu E:\\Ubuntu_backup_$(shell date +%Y%m%d).tar"
-	@echo "✅ Backup completed: E:\\Ubuntu_backup_$(shell date +%Y%m%d).tar"
+	powershell.exe -Command "wsl --export Ubuntu E:\\Ubuntu_backup_$(shell powershell -Command \"(Get-Date -Format yyyyMMdd)\").tar"
+	@echo "✅ Backup completed: E:\\Ubuntu_backup_$(shell powershell -Command \"(Get-Date -Format yyyyMMdd)\").tar"
